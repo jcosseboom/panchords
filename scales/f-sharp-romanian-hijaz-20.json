@@ -1,0 +1,50 @@
+{
+  "name": "F# Romanian Hijaz 20",
+  "manufacturer": "Yishama",
+  "ding": "F#3",
+  "noteCount": 20,
+  "notes": [
+    { "note": "B3",  "num": 5,  "ring": "inner",  "clock": 5.36 },
+    { "note": "C#4", "num": 6,  "ring": "inner",  "clock": 6.64 },
+    { "note": "D4",  "num": 7,  "ring": "inner",  "clock": 4.0 },
+    { "note": "F4",  "num": 8,  "ring": "inner",  "clock": 8.0 },
+    { "note": "F#4", "num": 9,  "ring": "inner",  "clock": 2.5 },
+    { "note": "G#4", "num": 10, "ring": "inner",  "clock": 9.5 },
+    { "note": "A4",  "num": 11, "ring": "inner",  "clock": 1.6 },
+    { "note": "B4",  "num": 12, "ring": "inner",  "clock": 10.4 },
+    { "note": "C#5", "num": 13, "ring": "inner",  "clock": 0.65 },
+    { "note": "D5",  "num": 14, "ring": "inner",  "clock": 11.35 },
+    { "note": "F5",  "num": 15, "ring": "middle", "clock": 0.7 },
+    { "note": "F#5", "num": 16, "ring": "middle", "clock": 11.3 },
+    { "note": "B2",  "num": 0,  "ring": "outer",  "clock": 4.3 },
+    { "note": "C#3", "num": 1,  "ring": "outer",  "clock": 7.7 },
+    { "note": "G#3", "num": 3,  "ring": "outer",  "clock": 9.4 },
+    { "note": "A3",  "num": 4,  "ring": "outer",  "clock": 2.6 },
+    { "note": "G#5", "num": 17, "ring": "outer",  "clock": 1.3 },
+    { "note": "A5",  "num": 18, "ring": "outer",  "clock": 10.7 },
+    { "note": "B5",  "num": 19, "ring": "outer",  "clock": 0.0 }
+  ],
+  "bottomDings": ["B2", "C#3"],
+  "ringRadii": {
+    "inner": 138,
+    "middle": 82,
+    "outer": 228
+  },
+  "dingDrop": 18,
+  "shellDimensions": {
+    "outer": { "rx": 278, "ry": 272 },
+    "inner": { "rx": 178, "ry": 176 }
+  },
+  "chords": {
+    "F#m":   ["F#3", "A3", "C#4", "F#4", "A4", "C#5", "F#5"],
+    "Bm":    ["B2", "B3", "D4", "F#4", "B4", "D5", "F#5", "B5"],
+    "Bm7":   ["B3", "D4", "F#4", "A4", "B4", "D5", "F#5", "A5", "B5"],
+    "D":     ["D4", "F#4", "A4", "D5", "F#5", "A5"],
+    "Dm":    ["D4", "F4", "A4", "D5", "F5", "A5"],
+    "Dmaj7": ["D4", "F#4", "A4", "C#5", "D5", "F#5", "A5"],
+    "C#":    ["C#3", "F4", "G#4", "C#5", "F5", "G#5"],
+    "G#dim": ["G#3", "B3", "D4", "G#4", "B4", "D5", "G#5"],
+    "Bdim":  ["B2", "B3", "D4", "F4", "B4", "D5", "F5", "B5"],
+    "Faug":  ["F4", "A4", "C#5", "F5"]
+  }
+}

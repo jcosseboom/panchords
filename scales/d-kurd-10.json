@@ -1,0 +1,41 @@
+{
+  "name": "D Kurd 10",
+  "manufacturer": "Makai",
+  "ding": "D3",
+  "noteCount": 10,
+  "notes": [
+    { "note": "A3",  "num": 1, "ring": "inner", "clock": 5.22 },
+    { "note": "Bb3", "num": 2, "ring": "inner", "clock": 6.66 },
+    { "note": "C4",  "num": 3, "ring": "inner", "clock": 3.69 },
+    { "note": "D4",  "num": 4, "ring": "inner", "clock": 8.21 },
+    { "note": "E4",  "num": 5, "ring": "inner", "clock": 2.41 },
+    { "note": "F4",  "num": 6, "ring": "inner", "clock": 9.58 },
+    { "note": "G4",  "num": 7, "ring": "inner", "clock": 1.13 },
+    { "note": "A4",  "num": 8, "ring": "inner", "clock": 10.76 },
+    { "note": "C5",  "num": 9, "ring": "inner", "clock": 0 }
+  ],
+  "bottomDings": [],
+  "ringRadii": {
+    "inner": 138
+  },
+  "dingDrop": 18,
+  "shellDimensions": {
+    "outer": { "rx": 278, "ry": 272 },
+    "inner": { "rx": 178, "ry": 176 }
+  },
+  "chords": {
+    "Dm":     ["D3", "A3", "D4", "F4", "A4"],
+    "Dm7":   ["D3", "A3", "C4", "D4", "F4", "A4", "C5"],
+    "Am":    ["A3", "C4", "E4", "A4", "C5"],
+    "Am7":   ["A3", "C4", "E4", "G4", "A4", "C5"],
+    "Bb":    ["Bb3", "D4", "F4"],
+    "Bbmaj7":["Bb3", "D4", "F4", "A4"],
+    "C":     ["C4", "E4", "G4", "C5"],
+    "C7":    ["Bb3", "C4", "E4", "G4", "C5"],
+    "Edim":  ["E4", "G4", "Bb3"],
+    "F":     ["A3", "C4", "F4", "A4", "C5"],
+    "Fmaj7": ["A3", "C4", "E4", "F4", "A4", "C5"],
+    "Gm":    ["D3", "Bb3", "D4", "G4"],
+    "Gm7":   ["D3", "Bb3", "D4", "F4", "G4"]
+  }
+}

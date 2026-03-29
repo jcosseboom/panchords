@@ -1,0 +1,39 @@
+{
+  "name": "D Major 9",
+  "manufacturer": "Rav Vast",
+  "ding": "D3",
+  "noteCount": 9,
+  "notes": [
+    { "note": "G3",  "num": 1, "ring": "inner", "clock": 6.0 },
+    { "note": "B3",  "num": 2, "ring": "inner", "clock": 4.25 },
+    { "note": "A3",  "num": 3, "ring": "inner", "clock": 7.75 },
+    { "note": "D4",  "num": 4, "ring": "inner", "clock": 2.8 },
+    { "note": "C#4", "num": 5, "ring": "inner", "clock": 9.2 },
+    { "note": "F#4", "num": 6, "ring": "inner", "clock": 1.5 },
+    { "note": "E4",  "num": 7, "ring": "inner", "clock": 10.5 },
+    { "note": "A4",  "num": 8, "ring": "inner", "clock": 0.0 }
+  ],
+  "bottomDings": [],
+  "ringRadii": {
+    "inner": 138
+  },
+  "dingDrop": 18,
+  "shellDimensions": {
+    "outer": { "rx": 278, "ry": 272 },
+    "inner": { "rx": 178, "ry": 176 }
+  },
+  "chords": {
+    "D":     ["D3", "F#4", "A3", "D4", "A4"],
+    "Dmaj7": ["D3", "F#4", "A3", "C#4", "D4", "A4"],
+    "Em":    ["E4", "G3", "B3"],
+    "Em7":   ["E4", "G3", "B3", "D4"],
+    "F#m":   ["F#4", "A3", "C#4", "A4"],
+    "G":     ["G3", "B3", "D4"],
+    "Gmaj7": ["G3", "B3", "D4", "F#4"],
+    "A":     ["A3", "C#4", "E4", "A4"],
+    "A7":    ["A3", "C#4", "E4", "G3", "A4"],
+    "Bm":    ["B3", "D4", "F#4"],
+    "Bm7":   ["B3", "D4", "F#4", "A4"],
+    "C#dim": ["C#4", "E4", "G3"]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "G Hijaz 19",
+  "manufacturer": "Ziran",
+  "ding": "G3",
+  "noteCount": 19,
+  "notes": [
+    { "note": "C4",  "num": 4,  "ring": "inner",  "clock": 5.2 },
+    { "note": "D4",  "num": 5,  "ring": "inner",  "clock": 6.8 },
+    { "note": "Eb4", "num": 6,  "ring": "inner",  "clock": 3.85 },
+    { "note": "F4",  "num": 7,  "ring": "inner",  "clock": 8.15 },
+    { "note": "G4",  "num": 8,  "ring": "inner",  "clock": 2.5 },
+    { "note": "Ab4", "num": 9,  "ring": "inner",  "clock": 9.5 },
+    { "note": "B4",  "num": 10, "ring": "inner",  "clock": 1.15 },
+    { "note": "C5",  "num": 11, "ring": "inner",  "clock": 10.85 },
+    { "note": "D5",  "num": 12, "ring": "inner",  "clock": 0.0 },
+    { "note": "Eb5", "num": 13, "ring": "middle", "clock": 11.05 },
+    { "note": "F5",  "num": 14, "ring": "middle", "clock": 0.95 },
+    { "note": "Eb3", "num": 0,  "ring": "outer",  "clock": 4.35 },
+    { "note": "F3",  "num": 1,  "ring": "outer",  "clock": 7.65 },
+    { "note": "Ab3", "num": 2,  "ring": "outer",  "clock": 9.5 },
+    { "note": "B3",  "num": 3,  "ring": "outer",  "clock": 2.5 },
+    { "note": "G5",  "num": 15, "ring": "outer",  "clock": 0.0 },
+    { "note": "Ab5", "num": 16, "ring": "outer",  "clock": 11.0 },
+    { "note": "B5",  "num": 17, "ring": "outer",  "clock": 1.0 }
+  ],
+  "bottomDings": ["Eb3", "F3"],
+  "ringRadii": {
+    "inner": 138,
+    "middle": 82,
+    "outer": 228
+  },
+  "dingDrop": 18,
+  "shellDimensions": {
+    "outer": { "rx": 278, "ry": 272 },
+    "inner": { "rx": 178, "ry": 176 }
+  },
+  "chords": {
+    "Ab":     ["Ab3", "C4", "Eb4", "Ab4", "C5", "Eb5", "Ab5"],
+    "Abmaj7": ["Ab3", "C4", "Eb4", "G4", "Ab4", "C5", "Eb5", "Ab5"],
+    "Bdim":   ["B3", "D4", "F4", "B4", "D5", "F5", "B5"],
+    "Bdim7":  ["Ab3", "B3", "D4", "F4", "Ab4", "B4", "D5", "F5", "Ab5", "B5"],
+    "Cm":     ["C4", "Eb4", "G4", "C5", "Eb5", "G5"],
+    "Ddim":   ["D4", "F4", "Ab4", "D5", "F5", "Ab5"],
+    "Fm":     ["Ab3", "C4", "F4", "Ab4", "C5", "F5", "Ab5"],
+    "Fm7":    ["Ab3", "C4", "Eb4", "F4", "Ab4", "C5", "Eb5", "F5", "Ab5"],
+    "G":      ["G3", "B3", "D4", "G4", "B4", "D5", "G5", "B5"],
+    "G7":     ["G3", "B3", "D4", "F4", "G4", "B4", "D5", "F5", "G5", "B5"]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "D Celtic Minor 9",
+  "manufacturer": "NovaPan",
+  "ding": "D3",
+  "noteCount": 9,
+  "notes": [
+    { "note": "E3",  "num": 1, "ring": "inner", "clock": 6.0 },
+    { "note": "F3",  "num": 2, "ring": "inner", "clock": 4.5 },
+    { "note": "G3",  "num": 3, "ring": "inner", "clock": 7.5 },
+    { "note": "A3",  "num": 4, "ring": "inner", "clock": 2.75 },
+    { "note": "B3",  "num": 5, "ring": "inner", "clock": 9.25 },
+    { "note": "C4",  "num": 6, "ring": "inner", "clock": 1.5 },
+    { "note": "D4",  "num": 7, "ring": "inner", "clock": 10.5 },
+    { "note": "E4",  "num": 8, "ring": "inner", "clock": 0.0 }
+  ],
+  "bottomDings": [],
+  "ringRadii": {
+    "inner": 138
+  },
+  "dingDrop": 18,
+  "shellDimensions": {
+    "outer": { "rx": 278, "ry": 272 },
+    "inner": { "rx": 178, "ry": 176 }
+  },
+  "chords": {
+    "Dm":    ["D3", "F3", "A3", "D4"],
+    "Dm7":   ["D3", "F3", "A3", "C4", "D4"],
+    "Em":    ["E3", "G3", "B3", "E4"],
+    "Em7":   ["E3", "G3", "B3", "D4", "E4"],
+    "F":     ["F3", "A3", "C4"],
+    "Fmaj7": ["F3", "A3", "C4", "E4"],
+    "G":     ["G3", "B3", "D4"],
+    "G7":    ["G3", "B3", "D4", "F3"],
+    "Am":    ["A3", "C4", "E4"],
+    "Am7":   ["A3", "C4", "E4", "G3"],
+    "Bdim":  ["B3", "D4", "F3"],
+    "C":     ["C4", "E4", "G3"],
+    "Cmaj7": ["C4", "E4", "G3", "B3"]
+  }
+}
