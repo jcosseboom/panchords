@@ -100,6 +100,14 @@
   </div>
 
   <div>
+    <label>Auto-Distribute Inner Ring</label>
+    <div style="display:flex; gap:8px;">
+      <button class="secondary" onclick="distributeInner('center')">Note 1 Center</button>
+      <button class="secondary" onclick="distributeInner('right')">Note 1 Right</button>
+    </div>
+  </div>
+
+  <div>
     <label>Note Positions</label>
     <table class="positions-table">
       <thead><tr><th>Note</th><th>#</th><th>Ring</th><th>Clock</th></tr></thead>
@@ -127,17 +135,39 @@ const FLAT_MAP = {"Db":"C#","Eb":"D#","Fb":"E","Gb":"F#","Ab":"G#","Bb":"A#","Cb
 
 const SCALE_FILES = [
   { file: "scales/a-integral-9.json", label: "A Integral 9", manufacturer: "Rav Vast" },
+  { file: "scales/b-aavartan-17.json", label: "B Aavartan 17", manufacturer: "Ayasa" },
   { file: "scales/b-kurd-10.json", label: "B Kurd 10", manufacturer: "Rav Vast" },
   { file: "scales/c-ashakiran-17.json", label: "C Ashakiran 17", manufacturer: "Ayasa" },
+  { file: "scales/c-sharp-pygmy-17.json", label: "C# Pygmy 17", manufacturer: "Ayasa" },
+  { file: "scales/d-aegean-18.json", label: "D Aegean 18", manufacturer: "Ayasa" },
+  { file: "scales/d-aegean-20.json", label: "D Aegean 20", manufacturer: "Ayasa" },
   { file: "scales/d-ashakiran-19.json", label: "D Ashakiran 19", manufacturer: "Ayasa" },
   { file: "scales/d-celtic-minor-9.json", label: "D Celtic Minor 9", manufacturer: "NovaPan" },
   { file: "scales/d-kurd-10.json", label: "D Kurd 10", manufacturer: "Makai" },
+  { file: "scales/lidah-d-kurd-16.json", label: "D Kurd 16", manufacturer: "Lidah" },
+  { file: "scales/d-kurd-12.json", label: "D Kurd 12", manufacturer: "Ayasa" },
+  { file: "scales/d-kurd-18.json", label: "D Kurd 18", manufacturer: "Ayasa" },
   { file: "scales/d-major-9.json", label: "D Major 9", manufacturer: "Rav Vast" },
   { file: "scales/e-amara-20.json", label: "E Amara 20", manufacturer: "Ayasa" },
+  { file: "scales/f-sharp-low-pygmy-21.json", label: "F# Low Pygmy 21", manufacturer: "Ayasa" },
   { file: "scales/f-sharp-pygmy-21.json", label: "F# Pygmy 21", manufacturer: "Mag" },
   { file: "scales/f-sharp-romanian-hijaz-20.json", label: "F# Romanian Hijaz 20", manufacturer: "Yishama" },
   { file: "scales/g-hijaz-19.json", label: "G Hijaz 19", manufacturer: "Ziran" },
   { file: "scales/g-pygmy-9.json", label: "G Pygmy 9", manufacturer: "Rav Vast" },
+  { file: "scales/yataopan-d-kurd-10.json", label: "D Kurd 10", manufacturer: "YataoPan" },
+  { file: "scales/yataopan-d-kurd-11.json", label: "D Kurd 11", manufacturer: "YataoPan" },
+  { file: "scales/yataopan-d-kurd-11-mini.json", label: "D Kurd 11 Mini", manufacturer: "YataoPan" },
+  { file: "scales/yataopan-d-kurd-13.json", label: "D Kurd 13", manufacturer: "YataoPan" },
+  { file: "scales/yataopan-d-kurd-13-ember.json", label: "D Kurd 13 Ember", manufacturer: "YataoPan" },
+  { file: "scales/yataopan-c-ashakiran-15.json", label: "C Ashakiran 15", manufacturer: "YataoPan" },
+  { file: "scales/yataopan-c-ashakiran-17.json", label: "C Ashakiran 17 Ember", manufacturer: "YataoPan" },
+  { file: "scales/yataopan-d-ashakiran-15.json", label: "D Ashakiran 15", manufacturer: "YataoPan" },
+  { file: "scales/yataopan-d-aegean-18.json", label: "D Aegean 18", manufacturer: "YataoPan" },
+  { file: "scales/yataopan-e-amara-15.json", label: "E Amara 15", manufacturer: "YataoPan" },
+  { file: "scales/yataopan-e-amara-20.json", label: "E Amara 20", manufacturer: "YataoPan" },
+  { file: "scales/yataopan-e-ashakiran-17.json", label: "E Ashakiran 17", manufacturer: "YataoPan" },
+  { file: "scales/yataopan-f-sharp-amara-20.json", label: "F# Amara 20", manufacturer: "YataoPan" },
+  { file: "scales/yataopan-f-sharp-low-pygmy-19.json", label: "F# Low Pygmy 19", manufacturer: "YataoPan" },
 ];
 
 const REF_IMAGES = {
@@ -303,6 +333,48 @@ document.addEventListener("mouseup", () => {
     renderSVG();
   }
 });
+
+// ── AUTO-DISTRIBUTE ───────────────────────────────────
+function distributeInner(mode) {
+  const inner = noteStates.filter(ns => ns.ring === "inner");
+  if (inner.length === 0) return;
+  const n = inner.length;
+  const spacing = 12 / n;
+  const positions = [];
+
+  if (mode === "center") {
+    // Note 1 at 6:00, then zigzag clockwise/counter-clockwise
+    positions.push(6.0);
+    for (let step = 1; step <= Math.floor((n - 1) / 2); step++) {
+      positions.push((6 + step * spacing) % 12);  // clockwise (left)
+      positions.push((6 - step * spacing + 12) % 12);  // counter-clockwise (right)
+    }
+    if (n % 2 === 0) {
+      // Even count: last note at top (6 + n/2 * spacing = 0)
+      positions.push((6 + (n / 2) * spacing) % 12);
+    }
+  } else {
+    // "right": Note 1 right of 6, Note 2 left of 6, then zigzag
+    const half = spacing / 2;
+    positions.push((6 - half + 12) % 12);  // Note 1 right
+    positions.push((6 + half) % 12);        // Note 2 left
+    for (let step = 1; step < Math.floor(n / 2); step++) {
+      positions.push((6 - half - step * spacing + 12) % 12);  // right
+      positions.push((6 + half + step * spacing) % 12);        // left
+    }
+    if (n % 2 === 1) {
+      // Odd count: last note at top
+      positions.push((6 - half - Math.floor(n / 2) * spacing + 12) % 12);
+    }
+  }
+
+  // Apply positions to inner ring notes (sorted by num)
+  inner.sort((a, b) => a.num - b.num);
+  for (let i = 0; i < inner.length && i < positions.length; i++) {
+    inner[i].clock = parseFloat(positions[i].toFixed(2));
+  }
+  renderSVG();
+}
 
 // ── SCALE LOADING ─────────────────────────────────────
 async function loadScale(file) {

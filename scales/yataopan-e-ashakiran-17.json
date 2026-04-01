@@ -1,0 +1,50 @@
+{
+  "name": "E Ashakiran 17",
+  "manufacturer": "YataoPan",
+  "ding": "E3",
+  "noteCount": 17,
+  "notes": [
+    { "note": "A3",  "num": 1,  "ring": "inner",  "clock": 6.0 },
+    { "note": "B3",  "num": 2,  "ring": "inner",  "clock": 7.5 },
+    { "note": "C#4", "num": 3,  "ring": "inner",  "clock": 4.5 },
+    { "note": "D#4", "num": 4,  "ring": "inner",  "clock": 9.0 },
+    { "note": "E4",  "num": 5,  "ring": "inner",  "clock": 3.0 },
+    { "note": "F#4", "num": 6,  "ring": "inner",  "clock": 10.5 },
+    { "note": "G#4", "num": 7,  "ring": "inner",  "clock": 1.5 },
+    { "note": "B4",  "num": 8,  "ring": "inner",  "clock": 11.25 },
+    { "note": "C#5", "num": 9,  "ring": "inner",  "clock": 0.75 },
+    { "note": "D#5", "num": 10, "ring": "middle", "clock": 11.0 },
+    { "note": "E5",  "num": 11, "ring": "middle", "clock": 1.0 },
+    { "note": "B2",  "num": 12, "ring": "outer",  "clock": 4.3 },
+    { "note": "C#3", "num": 13, "ring": "outer",  "clock": 7.7 },
+    { "note": "F#3", "num": 14, "ring": "outer",  "clock": 2.6 },
+    { "note": "G#3", "num": 15, "ring": "outer",  "clock": 9.4 },
+    { "note": "A4",  "num": 16, "ring": "outer",  "clock": 1.45 }
+  ],
+  "bottomDings": ["B2", "C#3"],
+  "ringRadii": {
+    "inner": 138,
+    "middle": 82,
+    "outer": 228
+  },
+  "dingDrop": 18,
+  "shellDimensions": {
+    "outer": { "rx": 278, "ry": 272 },
+    "inner": { "rx": 178, "ry": 176 }
+  },
+  "chords": {
+    "E":      ["E3", "G#3", "B3", "E4", "G#4", "B4", "E5"],
+    "Emaj7":  ["E3", "G#3", "B3", "D#4", "E4", "G#4", "B4", "D#5", "E5"],
+    "F#m":    ["F#3", "A3", "C#4", "F#4", "A4", "C#5"],
+    "F#m7":   ["E3", "F#3", "A3", "C#4", "E4", "F#4", "A4", "C#5", "E5"],
+    "G#m":    ["B2", "G#3", "B3", "D#4", "G#4", "B4", "D#5"],
+    "G#m7":   ["B2", "F#3", "G#3", "B3", "D#4", "F#4", "G#4", "B4", "D#5"],
+    "A":      ["A3", "C#4", "E4", "A4", "C#5", "E5"],
+    "Amaj7":  ["A3", "C#4", "E4", "G#4", "A4", "C#5", "E5"],
+    "B":      ["B2", "B3", "D#4", "F#4", "B4", "D#5"],
+    "B7":     ["B2", "A3", "B3", "D#4", "F#4", "A4", "B4", "D#5"],
+    "C#m":    ["C#3", "G#3", "C#4", "E4", "G#4", "C#5", "E5"],
+    "C#m7":   ["C#3", "G#3", "B3", "C#4", "E4", "G#4", "B4", "C#5", "E5"],
+    "D#dim":  ["B2", "D#4", "F#4", "A4", "B4", "D#5"]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "D Ashakiran 15",
+  "manufacturer": "YataoPan",
+  "ding": "D3",
+  "noteCount": 15,
+  "notes": [
+    { "note": "G3",  "num": 1,  "ring": "inner",  "clock": 5.22 },
+    { "note": "A3",  "num": 2,  "ring": "inner",  "clock": 6.78 },
+    { "note": "B3",  "num": 3,  "ring": "inner",  "clock": 3.77 },
+    { "note": "C#4", "num": 4,  "ring": "inner",  "clock": 8.23 },
+    { "note": "D4",  "num": 5,  "ring": "inner",  "clock": 2.3 },
+    { "note": "E4",  "num": 6,  "ring": "inner",  "clock": 9.7 },
+    { "note": "F#4", "num": 7,  "ring": "inner",  "clock": 1.13 },
+    { "note": "A4",  "num": 8,  "ring": "inner",  "clock": 10.87 },
+    { "note": "B4",  "num": 9,  "ring": "inner",  "clock": 0.0 },
+    { "note": "E3",  "num": 10, "ring": "outer",  "clock": 4.28 },
+    { "note": "F#3", "num": 11, "ring": "outer",  "clock": 7.72 },
+    { "note": "G4",  "num": 12, "ring": "outer",  "clock": 2.73 },
+    { "note": "C#5", "num": 13, "ring": "outer",  "clock": 10.92 },
+    { "note": "D5",  "num": 14, "ring": "outer",  "clock": 1.08 }
+  ],
+  "bottomDings": ["E3", "F#3"],
+  "ringRadii": {
+    "inner": 138,
+    "outer": 228
+  },
+  "dingDrop": 18,
+  "shellDimensions": {
+    "outer": { "rx": 278, "ry": 272 },
+    "inner": { "rx": 178, "ry": 176 }
+  },
+  "chords": {
+    "D":      ["D3", "F#3", "A3", "D4", "F#4", "A4", "D5"],
+    "Dmaj7":  ["D3", "F#3", "A3", "C#4", "D4", "F#4", "A4", "C#5", "D5"],
+    "Em":     ["E3", "G3", "B3", "E4", "G4", "B4"],
+    "Em7":    ["E3", "G3", "B3", "D4", "E4", "G4", "B4", "D5"],
+    "F#m":    ["F#3", "A3", "C#4", "F#4", "A4", "C#5"],
+    "F#m7":   ["E3", "F#3", "A3", "C#4", "E4", "F#4", "A4", "C#5"],
+    "G":      ["G3", "B3", "D4", "G4", "B4", "D5"],
+    "Gmaj7":  ["G3", "B3", "D4", "F#4", "G4", "B4", "D5"],
+    "A":      ["A3", "C#4", "E4", "A4", "C#5"],
+    "A7":     ["A3", "C#4", "E4", "G4", "A4", "C#5"],
+    "Bm":     ["B3", "D4", "F#4", "B4", "D5"],
+    "Bm7":    ["B3", "D4", "F#4", "A4", "B4", "D5"],
+    "C#dim":  ["C#4", "E4", "G4", "C#5"]
+  }
+}
