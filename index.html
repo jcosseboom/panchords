@@ -63,12 +63,17 @@
 // ── SCALE REGISTRY ───────────────────────────────────────
 // Each entry: { file, label }. Add new models here.
 const MODELS = [
-{ file: "scales/d-kurd-10.json", label: "D Kurd 10 — Makai" },
+  { file: "scales/a-integral-9.json", label: "A Integral 9 — Rav Vast" },
+  { file: "scales/b-kurd-10.json", label: "B Kurd 10 — Rav Vast" },
+  { file: "scales/c-ashakiran-17.json", label: "C Ashakiran 17 — Ayasa" },
+  { file: "scales/d-ashakiran-19.json", label: "D Ashakiran 19 — Ayasa" },
+  { file: "scales/d-celtic-minor-9.json", label: "D Celtic Minor 9 — NovaPan" },
+  { file: "scales/d-kurd-10.json", label: "D Kurd 10 — Makai" },
+  { file: "scales/d-major-9.json", label: "D Major 9 — Rav Vast" },
   { file: "scales/e-amara-20.json", label: "E Amara 20 — Ayasa" },
+  { file: "scales/f-sharp-pygmy-21.json", label: "F# Pygmy 21 — Mag" },
   { file: "scales/f-sharp-romanian-hijaz-20.json", label: "F# Romanian Hijaz 20 — Yishama" },
   { file: "scales/g-hijaz-19.json", label: "G Hijaz 19 — Ziran" },
-  { file: "scales/d-celtic-minor-9.json", label: "D Celtic Minor 9 — NovaPan" },
-  { file: "scales/d-major-9.json", label: "D Major 9 — Rav Vast" },
   { file: "scales/g-pygmy-9.json", label: "G Pygmy 9 — Rav Vast" },
 ];
 
@@ -131,6 +136,7 @@ const P = {
   shell:"#d4d8df",shellS:"#b8bec8",top:"#c5cbd5",topS:"#a8b0bc",
   note:"#eaecf0",noteS:"#b0b6c0",txt:"#5a6270",num:"#8890a0",
   hi:"#3b7dd8",hiGlow:"#5a9cf0",hiTxt:"#fff",hiS:"#2a5faa",
+  hiRoot:"#6ba3e8",hiRootS:"#4a80c0",hiRootGlow:"#8bbaf0",
   ding:"#dde0e6",dingS:"#a8adb8",bg:"#f5f6f8",title:"#2c3340",sub:"#6b7585",
 };
 
@@ -144,6 +150,8 @@ function buildSVG(scale, ctx, chordName) {
   const W = 620, H = 690;
   const chords = { ...scale.chords, "None": [] };
   const hlSet = new Set(chords[chordName] || []);
+  const rootMatch = chordName.match(/^([A-G][#b]?)/);
+  const rootPitch = rootMatch ? rootMatch[1] : null;
   const title = chordName !== "None" ? chordName + " Chord" : scale.name;
   const subtitle = scale.name + " — " + scale.manufacturer;
   const shell = scale.shellDimensions;
@@ -165,8 +173,10 @@ function buildSVG(scale, ctx, chordName) {
     if (!p) continue;
     const r = getNoteRadius(n.note, n.isDing, ctx);
     const hit = hlSet.has(n.note);
-    const fill = hit ? P.hi : n.isDing ? P.ding : P.note;
-    const stroke = hit ? P.hiS : n.isDing ? P.dingS : P.noteS;
+    const notePitch = n.note.replace(/\d+$/, "");
+    const isRoot = hit && rootPitch && notePitch === rootPitch;
+    const fill = hit ? (isRoot ? P.hiRoot : P.hi) : n.isDing ? P.ding : P.note;
+    const stroke = hit ? (isRoot ? P.hiRootS : P.hiS) : n.isDing ? P.dingS : P.noteS;
     const sw = hit ? 2 : 1.2;
     const txtC = hit ? P.hiTxt : P.txt;
     const numC = hit ? "rgba(255,255,255,0.7)" : P.num;
@@ -177,7 +187,7 @@ function buildSVG(scale, ctx, chordName) {
     const numLabel = n.isDing ? "D" : n.num;
 
     if (hit) {
-      svg += `<circle cx="${p.x}" cy="${p.y}" r="${r+4}" fill="none" stroke="${P.hiGlow}" stroke-width="2" opacity="0.45"/>`;
+      svg += `<circle cx="${p.x}" cy="${p.y}" r="${r+4}" fill="none" stroke="${isRoot ? P.hiRootGlow : P.hiGlow}" stroke-width="2" opacity="0.45"/>`;
     }
     svg += `<circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="${sw}"/>`;
     svg += `<text x="${p.x}" y="${p.y - gap*0.5}" text-anchor="middle" dominant-baseline="central" fill="${txtC}" font-size="${nfs}" font-family="Georgia,Palatino,serif" font-weight="${hit?700:500}">${noteLabel}</text>`;
@@ -221,7 +231,7 @@ async function loadScale(file) {
   // Rebuild chord buttons
   const container = document.getElementById("chordBtns");
   container.innerHTML = "";
-  const chordNames = [...Object.keys(scale.chords), "None"];
+  const chordNames = ["None", ...Object.keys(scale.chords)];
   for (const name of chordNames) {
     const b = document.createElement("button");
     b.textContent = name;
@@ -230,8 +240,8 @@ async function loadScale(file) {
     container.appendChild(b);
   }
 
-  // Select first chord
-  selectedChord = Object.keys(scale.chords)[0] || "None";
+  // Default to None
+  selectedChord = "None";
   render();
 }
 

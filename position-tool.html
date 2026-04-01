@@ -124,16 +124,22 @@ const FLAT_MAP = {"Db":"C#","Eb":"D#","Fb":"E","Gb":"F#","Ab":"G#","Bb":"A#","Cb
 const SCALE_FILES = [
 { file: "scales/d-kurd-10.json", label: "D Kurd 10" },
   { file: "scales/e-amara-20.json", label: "E Amara 20" },
+  { file: "scales/f-sharp-pygmy-21.json", label: "F# Pygmy 21" },
   { file: "scales/f-sharp-romanian-hijaz-20.json", label: "F# Romanian Hijaz 20" },
   { file: "scales/g-hijaz-19.json", label: "G Hijaz 19" },
   { file: "scales/d-celtic-minor-9.json", label: "D Celtic Minor 9" },
   { file: "scales/d-major-9.json", label: "D Major 9" },
   { file: "scales/g-pygmy-9.json", label: "G Pygmy 9" },
+  { file: "scales/d-ashakiran-19.json", label: "D Ashakiran 19" },
+  { file: "scales/c-ashakiran-17.json", label: "C Ashakiran 17" },
+  { file: "scales/a-integral-9.json", label: "A Integral 9" },
+  { file: "scales/b-kurd-10.json", label: "B Kurd 10" },
 ];
 
 const REF_IMAGES = {
 "scales/d-kurd-10.json": "reference/Makai D Kurd 10.png",
   "scales/e-amara-20.json": "reference/Ayasa E Amara 20.png",
+  "scales/f-sharp-pygmy-21.json": "reference/mag-f-sharp-pygmy-21.png",
 };
 
 let scale = null;
@@ -176,14 +182,6 @@ function renderSVG() {
   const radii = scale.ringRadii;
 
   let html = `<rect width="620" height="690" fill="#f5f6f8" rx="12"/>`;
-
-  // Reference image (hidden by default)
-  const refSrc = REF_IMAGES[document.getElementById("scaleSelect").value];
-  if (refSrc) {
-    const opacity = showRef ? (document.getElementById("refOpacity").value / 100) : 0;
-    html += `<image id="refImg" href="${refSrc}" x="30" y="30" width="560" height="560"
-      opacity="${opacity}" preserveAspectRatio="xMidYMid meet"/>`;
-  }
 
   // Shell
   html += `<ellipse cx="${CX}" cy="${CY}" rx="${shell.outer.rx}" ry="${shell.outer.ry}" fill="#d4d8df" stroke="#b8bec8" stroke-width="1.5"/>`;
@@ -237,6 +235,14 @@ function renderSVG() {
   // Title area
   html += `<text x="${CX}" y="646" text-anchor="middle" fill="#2c3340" font-size="20" font-family="Georgia,Palatino,serif" font-weight="700">${scale.name}</text>`;
   html += `<text x="${CX}" y="668" text-anchor="middle" fill="#6b7585" font-size="12" font-family="Georgia,Palatino,serif">Drag notes to position — clock values shown</text>`;
+
+  // Reference image overlay (on top of everything, pointer-events none so notes are still draggable)
+  const refSrc = REF_IMAGES[document.getElementById("scaleSelect").value];
+  if (refSrc && showRef) {
+    const opacity = document.getElementById("refOpacity").value / 100;
+    html += `<image href="${refSrc}" x="30" y="30" width="560" height="560"
+      opacity="${opacity}" preserveAspectRatio="xMidYMid meet" pointer-events="none"/>`;
+  }
 
   svg.innerHTML = html;
   updateTable();
