@@ -82,7 +82,11 @@
   </div>
 
   <div>
-    <label>Scale File</label>
+    <label>Maker</label>
+    <select id="makerSelect"></select>
+  </div>
+  <div>
+    <label>Scale</label>
     <select id="scaleSelect"></select>
   </div>
 
@@ -122,18 +126,18 @@ const NOTE_NAMES = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
 const FLAT_MAP = {"Db":"C#","Eb":"D#","Fb":"E","Gb":"F#","Ab":"G#","Bb":"A#","Cb":"B"};
 
 const SCALE_FILES = [
-{ file: "scales/d-kurd-10.json", label: "D Kurd 10" },
-  { file: "scales/e-amara-20.json", label: "E Amara 20" },
-  { file: "scales/f-sharp-pygmy-21.json", label: "F# Pygmy 21" },
-  { file: "scales/f-sharp-romanian-hijaz-20.json", label: "F# Romanian Hijaz 20" },
-  { file: "scales/g-hijaz-19.json", label: "G Hijaz 19" },
-  { file: "scales/d-celtic-minor-9.json", label: "D Celtic Minor 9" },
-  { file: "scales/d-major-9.json", label: "D Major 9" },
-  { file: "scales/g-pygmy-9.json", label: "G Pygmy 9" },
-  { file: "scales/d-ashakiran-19.json", label: "D Ashakiran 19" },
-  { file: "scales/c-ashakiran-17.json", label: "C Ashakiran 17" },
-  { file: "scales/a-integral-9.json", label: "A Integral 9" },
-  { file: "scales/b-kurd-10.json", label: "B Kurd 10" },
+  { file: "scales/a-integral-9.json", label: "A Integral 9", manufacturer: "Rav Vast" },
+  { file: "scales/b-kurd-10.json", label: "B Kurd 10", manufacturer: "Rav Vast" },
+  { file: "scales/c-ashakiran-17.json", label: "C Ashakiran 17", manufacturer: "Ayasa" },
+  { file: "scales/d-ashakiran-19.json", label: "D Ashakiran 19", manufacturer: "Ayasa" },
+  { file: "scales/d-celtic-minor-9.json", label: "D Celtic Minor 9", manufacturer: "NovaPan" },
+  { file: "scales/d-kurd-10.json", label: "D Kurd 10", manufacturer: "Makai" },
+  { file: "scales/d-major-9.json", label: "D Major 9", manufacturer: "Rav Vast" },
+  { file: "scales/e-amara-20.json", label: "E Amara 20", manufacturer: "Ayasa" },
+  { file: "scales/f-sharp-pygmy-21.json", label: "F# Pygmy 21", manufacturer: "Mag" },
+  { file: "scales/f-sharp-romanian-hijaz-20.json", label: "F# Romanian Hijaz 20", manufacturer: "Yishama" },
+  { file: "scales/g-hijaz-19.json", label: "G Hijaz 19", manufacturer: "Ziran" },
+  { file: "scales/g-pygmy-9.json", label: "G Pygmy 9", manufacturer: "Rav Vast" },
 ];
 
 const REF_IMAGES = {
@@ -348,18 +352,40 @@ function showToast(msg) {
 }
 
 // ── INIT ──────────────────────────────────────────────
-const sel = document.getElementById("scaleSelect");
-for (const s of SCALE_FILES) {
-  const opt = document.createElement("option");
-  opt.value = s.file;
-  opt.textContent = s.label;
-  sel.appendChild(opt);
-}
-sel.addEventListener("change", () => loadScale(sel.value));
+const makerSelect = document.getElementById("makerSelect");
+const scaleSelect = document.getElementById("scaleSelect");
+const makers = [...new Set(SCALE_FILES.map(s => s.manufacturer))].sort();
 
-// Default to D Kurd since that's what we're positioning
-sel.value = "scales/g-hijaz-19.json";
-loadScale("scales/g-hijaz-19.json");
+function populateMakerSelect() {
+  makerSelect.innerHTML = "";
+  for (const maker of makers) {
+    const opt = document.createElement("option");
+    opt.value = maker;
+    opt.textContent = maker;
+    makerSelect.appendChild(opt);
+  }
+}
+
+function populateScaleSelect(maker) {
+  scaleSelect.innerHTML = "";
+  const scales = SCALE_FILES.filter(s => s.manufacturer === maker).sort((a, b) => a.label.localeCompare(b.label));
+  for (const s of scales) {
+    const opt = document.createElement("option");
+    opt.value = s.file;
+    opt.textContent = s.label;
+    scaleSelect.appendChild(opt);
+  }
+}
+
+makerSelect.addEventListener("change", () => {
+  populateScaleSelect(makerSelect.value);
+  loadScale(scaleSelect.value);
+});
+scaleSelect.addEventListener("change", () => loadScale(scaleSelect.value));
+
+populateMakerSelect();
+populateScaleSelect(makers[0]);
+loadScale(scaleSelect.value);
 </script>
 </body>
 </html>

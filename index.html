@@ -15,8 +15,11 @@
   .wrap { max-width: 620px; margin: 0 auto; }
   h1 { font-size: 26px; font-weight: 700; color: #2c3340; text-align: center; }
   .sub { font-size: 13px; color: #6b7585; text-align: center; margin: 6px 0 24px; }
-  .model-select {
-    display: block; margin: 0 auto 20px; padding: 7px 14px; border-radius: 6px;
+  .selectors {
+    display: flex; gap: 10px; justify-content: center; margin-bottom: 20px;
+  }
+  .selectors select {
+    padding: 7px 14px; border-radius: 6px;
     border: 1px solid #bcc2cc; font-size: 13px; font-family: Georgia, Palatino, serif;
     background: #fff; color: #3c4250; cursor: pointer; outline: none;
   }
@@ -49,7 +52,10 @@
 <div class="wrap">
   <h1>Handpan Chord Diagram</h1>
   <p class="sub" id="subtitle">Select a model and chord to highlight notes</p>
-  <select class="model-select" id="modelSelect"></select>
+  <div class="selectors">
+    <select id="makerSelect"></select>
+    <select id="scaleSelect"></select>
+  </div>
   <div class="chords" id="chordBtns"></div>
 <div class="dia-wrap" id="dia"></div>
   <div class="actions">
@@ -61,20 +67,20 @@
 
 <script>
 // ── SCALE REGISTRY ───────────────────────────────────────
-// Each entry: { file, label }. Add new models here.
+// Each entry: { file, label, manufacturer }. Add new models here.
 const MODELS = [
-  { file: "scales/a-integral-9.json", label: "A Integral 9 — Rav Vast" },
-  { file: "scales/b-kurd-10.json", label: "B Kurd 10 — Rav Vast" },
-  { file: "scales/c-ashakiran-17.json", label: "C Ashakiran 17 — Ayasa" },
-  { file: "scales/d-ashakiran-19.json", label: "D Ashakiran 19 — Ayasa" },
-  { file: "scales/d-celtic-minor-9.json", label: "D Celtic Minor 9 — NovaPan" },
-  { file: "scales/d-kurd-10.json", label: "D Kurd 10 — Makai" },
-  { file: "scales/d-major-9.json", label: "D Major 9 — Rav Vast" },
-  { file: "scales/e-amara-20.json", label: "E Amara 20 — Ayasa" },
-  { file: "scales/f-sharp-pygmy-21.json", label: "F# Pygmy 21 — Mag" },
-  { file: "scales/f-sharp-romanian-hijaz-20.json", label: "F# Romanian Hijaz 20 — Yishama" },
-  { file: "scales/g-hijaz-19.json", label: "G Hijaz 19 — Ziran" },
-  { file: "scales/g-pygmy-9.json", label: "G Pygmy 9 — Rav Vast" },
+  { file: "scales/a-integral-9.json", label: "A Integral 9", manufacturer: "Rav Vast" },
+  { file: "scales/b-kurd-10.json", label: "B Kurd 10", manufacturer: "Rav Vast" },
+  { file: "scales/c-ashakiran-17.json", label: "C Ashakiran 17", manufacturer: "Ayasa" },
+  { file: "scales/d-ashakiran-19.json", label: "D Ashakiran 19", manufacturer: "Ayasa" },
+  { file: "scales/d-celtic-minor-9.json", label: "D Celtic Minor 9", manufacturer: "NovaPan" },
+  { file: "scales/d-kurd-10.json", label: "D Kurd 10", manufacturer: "Makai" },
+  { file: "scales/d-major-9.json", label: "D Major 9", manufacturer: "Rav Vast" },
+  { file: "scales/e-amara-20.json", label: "E Amara 20", manufacturer: "Ayasa" },
+  { file: "scales/f-sharp-pygmy-21.json", label: "F# Pygmy 21", manufacturer: "Mag" },
+  { file: "scales/f-sharp-romanian-hijaz-20.json", label: "F# Romanian Hijaz 20", manufacturer: "Yishama" },
+  { file: "scales/g-hijaz-19.json", label: "G Hijaz 19", manufacturer: "Ziran" },
+  { file: "scales/g-pygmy-9.json", label: "G Pygmy 9", manufacturer: "Rav Vast" },
 ];
 
 // ── NOTE UTILITIES ───────────────────────────────────────
@@ -281,17 +287,43 @@ function exportPNG() {
 }
 
 // ── INIT ─────────────────────────────────────────────────
-const modelSelect = document.getElementById("modelSelect");
-for (const m of MODELS) {
-  const opt = document.createElement("option");
-  opt.value = m.file;
-  opt.textContent = m.label;
-  modelSelect.appendChild(opt);
-}
-modelSelect.addEventListener("change", () => loadScale(modelSelect.value));
+const makerSelect = document.getElementById("makerSelect");
+const scaleSelect = document.getElementById("scaleSelect");
 
-// Load first model
-loadScale(MODELS[0].file);
+// Build sorted list of unique manufacturers
+const makers = [...new Set(MODELS.map(m => m.manufacturer))].sort();
+
+function populateMakerSelect() {
+  makerSelect.innerHTML = "";
+  for (const maker of makers) {
+    const opt = document.createElement("option");
+    opt.value = maker;
+    opt.textContent = maker;
+    makerSelect.appendChild(opt);
+  }
+}
+
+function populateScaleSelect(maker) {
+  scaleSelect.innerHTML = "";
+  const scales = MODELS.filter(m => m.manufacturer === maker).sort((a, b) => a.label.localeCompare(b.label));
+  for (const s of scales) {
+    const opt = document.createElement("option");
+    opt.value = s.file;
+    opt.textContent = s.label;
+    scaleSelect.appendChild(opt);
+  }
+}
+
+makerSelect.addEventListener("change", () => {
+  populateScaleSelect(makerSelect.value);
+  loadScale(scaleSelect.value);
+});
+scaleSelect.addEventListener("change", () => loadScale(scaleSelect.value));
+
+// Initialize
+populateMakerSelect();
+populateScaleSelect(makers[0]);
+loadScale(scaleSelect.value);
 </script>
 <script data-goatcounter="https://jcosseboom.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
