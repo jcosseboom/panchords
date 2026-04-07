@@ -4,27 +4,125 @@
   "ding": "E3",
   "noteCount": 20,
   "notes": [
-    { "note": "B3",  "num": 1,  "ring": "inner",  "clock": 6.0 },
-    { "note": "D4",  "num": 2,  "ring": "inner",  "clock": 7.26 },
-    { "note": "E4",  "num": 3,  "ring": "inner",  "clock": 4.7 },
-    { "note": "F#4", "num": 4,  "ring": "inner",  "clock": 8.5 },
-    { "note": "G4",  "num": 5,  "ring": "inner",  "clock": 3.5 },
-    { "note": "A4",  "num": 6,  "ring": "inner",  "clock": 10.0 },
-    { "note": "B4",  "num": 7,  "ring": "inner",  "clock": 2.0 },
-    { "note": "D5",  "num": 8,  "ring": "inner",  "clock": 11.29 },
-    { "note": "E5",  "num": 9,  "ring": "inner",  "clock": 0.77 },
-    { "note": "F#5", "num": 10, "ring": "middle", "clock": 10.5 },
-    { "note": "G5",  "num": 11, "ring": "middle", "clock": 1.5 },
-    { "note": "A5",  "num": 12, "ring": "middle", "clock": 0.0 },
-    { "note": "D3",  "num": 13, "ring": "outer",  "clock": 4.0 },
-    { "note": "F#3", "num": 14, "ring": "outer",  "clock": 8.0 },
-    { "note": "C4",  "num": 15, "ring": "outer",  "clock": 2.5 },
-    { "note": "C3",  "num": 16, "ring": "outer",  "clock": 9.5 },
-    { "note": "G3",  "num": 17, "ring": "outer",  "clock": 1.0 },
-    { "note": "A3",  "num": 18, "ring": "outer",  "clock": 11.0 },
-    { "note": "C5",  "num": 19, "ring": "outer",  "clock": 0.0 }
+    {
+      "note": "B3",
+      "num": 1,
+      "ring": "inner",
+      "clock": 6.0
+    },
+    {
+      "note": "D4",
+      "num": 2,
+      "ring": "inner",
+      "clock": 7.26
+    },
+    {
+      "note": "E4",
+      "num": 3,
+      "ring": "inner",
+      "clock": 4.7
+    },
+    {
+      "note": "F#4",
+      "num": 4,
+      "ring": "inner",
+      "clock": 8.5
+    },
+    {
+      "note": "G4",
+      "num": 5,
+      "ring": "inner",
+      "clock": 3.5
+    },
+    {
+      "note": "A4",
+      "num": 6,
+      "ring": "inner",
+      "clock": 10.0
+    },
+    {
+      "note": "B4",
+      "num": 7,
+      "ring": "inner",
+      "clock": 2.0
+    },
+    {
+      "note": "D5",
+      "num": 8,
+      "ring": "inner",
+      "clock": 11.29
+    },
+    {
+      "note": "E5",
+      "num": 9,
+      "ring": "inner",
+      "clock": 0.77
+    },
+    {
+      "note": "F#5",
+      "num": 10,
+      "ring": "middle",
+      "clock": 10.5
+    },
+    {
+      "note": "G5",
+      "num": 11,
+      "ring": "middle",
+      "clock": 1.5
+    },
+    {
+      "note": "A5",
+      "num": 12,
+      "ring": "middle",
+      "clock": 0.0
+    },
+    {
+      "note": "D3",
+      "num": 13,
+      "ring": "outer",
+      "clock": 4.0
+    },
+    {
+      "note": "F#3",
+      "num": 14,
+      "ring": "outer",
+      "clock": 8.0
+    },
+    {
+      "note": "C4",
+      "num": 15,
+      "ring": "outer",
+      "clock": 2.5
+    },
+    {
+      "note": "C3",
+      "num": 16,
+      "ring": "outer",
+      "clock": 9.5
+    },
+    {
+      "note": "G3",
+      "num": 17,
+      "ring": "outer",
+      "clock": 1.0
+    },
+    {
+      "note": "A3",
+      "num": 18,
+      "ring": "outer",
+      "clock": 11.0
+    },
+    {
+      "note": "C5",
+      "num": 19,
+      "ring": "outer",
+      "clock": 0.0
+    }
   ],
-  "bottomDings": ["D3", "F#3"],
+  "bottomDings": [
+    "D3",
+    "F#3"
+  ],
   "ringRadii": {
     "inner": 138,
     "middle": 82,
@@ -32,22 +130,169 @@
   },
   "dingDrop": 18,
   "shellDimensions": {
-    "outer": { "rx": 278, "ry": 272 },
-    "inner": { "rx": 178, "ry": 176 }
+    "outer": {
+      "rx": 278,
+      "ry": 272
+    },
+    "inner": {
+      "rx": 178,
+      "ry": 176
+    }
   },
   "chords": {
-    "Em":     ["E3", "B3", "E4", "G4", "B4", "E5", "G5"],
-    "Em7":   ["E3", "B3", "D4", "E4", "G4", "B4", "D5", "E5", "G5"],
-    "Am":    ["A3", "C4", "E4", "A4", "C5", "E5"],
-    "Am7":   ["A3", "C4", "E4", "G4", "A4", "C5", "E5", "G5"],
-    "Bm":    ["B3", "D4", "F#4", "B4", "D5", "F#5"],
-    "Bm7":   ["B3", "D4", "F#4", "A4", "B4", "D5", "F#5", "A5"],
-    "C":     ["C3", "C4", "E4", "G4", "C5", "E5", "G5"],
-    "Cmaj7": ["C3", "C4", "E4", "G4", "B4", "C5", "E5", "G5"],
-    "D":     ["D3", "D4", "F#4", "A4", "D5", "F#5", "A5"],
-    "D7":    ["D3", "C4", "D4", "F#4", "A4", "C5", "D5", "F#5", "A5"],
-    "F#dim": ["F#3", "A3", "C4", "F#4", "A4", "C5", "F#5"],
-    "G":     ["G3", "B3", "D4", "G4", "B4", "D5", "G5"],
-    "Gmaj7": ["G3", "B3", "D4", "F#4", "G4", "B4", "D5", "F#5", "G5"]
+    "Em": [
+      "E3",
+      "G3",
+      "B3",
+      "E4",
+      "G4",
+      "B4",
+      "E5",
+      "G5"
+    ],
+    "Em7": [
+      "D3",
+      "E3",
+      "G3",
+      "B3",
+      "D4",
+      "E4",
+      "G4",
+      "B4",
+      "D5",
+      "E5",
+      "G5"
+    ],
+    "F#dim": [
+      "C3",
+      "F#3",
+      "A3",
+      "C4",
+      "F#4",
+      "A4",
+      "C5",
+      "F#5",
+      "A5"
+    ],
+    "G": [
+      "D3",
+      "G3",
+      "B3",
+      "D4",
+      "G4",
+      "B4",
+      "D5",
+      "G5"
+    ],
+    "Gmaj7": [
+      "D3",
+      "F#3",
+      "G3",
+      "B3",
+      "D4",
+      "F#4",
+      "G4",
+      "B4",
+      "D5",
+      "F#5",
+      "G5"
+    ],
+    "Am": [
+      "C3",
+      "E3",
+      "A3",
+      "C4",
+      "E4",
+      "A4",
+      "C5",
+      "E5",
+      "A5"
+    ],
+    "Am7": [
+      "C3",
+      "E3",
+      "G3",
+      "A3",
+      "C4",
+      "E4",
+      "G4",
+      "A4",
+      "C5",
+      "E5",
+      "G5",
+      "A5"
+    ],
+    "Bm": [
+      "D3",
+      "F#3",
+      "B3",
+      "D4",
+      "F#4",
+      "B4",
+      "D5",
+      "F#5"
+    ],
+    "Bm7": [
+      "D3",
+      "F#3",
+      "A3",
+      "B3",
+      "D4",
+      "F#4",
+      "A4",
+      "B4",
+      "D5",
+      "F#5",
+      "A5"
+    ],
+    "C": [
+      "C3",
+      "E3",
+      "G3",
+      "C4",
+      "E4",
+      "G4",
+      "C5",
+      "E5",
+      "G5"
+    ],
+    "Cmaj7": [
+      "C3",
+      "E3",
+      "G3",
+      "B3",
+      "C4",
+      "E4",
+      "G4",
+      "B4",
+      "C5",
+      "E5",
+      "G5"
+    ],
+    "D": [
+      "D3",
+      "F#3",
+      "A3",
+      "D4",
+      "F#4",
+      "A4",
+      "D5",
+      "F#5",
+      "A5"
+    ],
+    "D7": [
+      "C3",
+      "D3",
+      "F#3",
+      "A3",
+      "C4",
+      "D4",
+      "F#4",
+      "A4",
+      "C5",
+      "D5",
+      "F#5",
+      "A5"
+    ]
   }
 }
